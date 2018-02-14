@@ -120,15 +120,12 @@ func main() {
 	}
 
 	// Endpoint for authenticating with token
-	sslRouter.Handle("/authenticate", webhook)
+	publicRouter.Handle("/authenticate", webhook)
 
 	// Endpoint for token issuance after LDAP auth
-	sslRouter.Handle("/ldapAuth", ldapTokenIssuer)
+	publicRouter.Handle("/ldapAuth", ldapTokenIssuer)
 
 	// Endpoint for healthz on ssl port
-	sslRouter.HandleFunc("/healthz", healthz)
-
-	// Endpoint for livenessProbe
 	publicRouter.HandleFunc("/healthz", healthz)
 
 	TLSConfig := &tls.Config{
