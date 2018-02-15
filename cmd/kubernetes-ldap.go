@@ -150,8 +150,8 @@ func main() {
 	go publicServer.ListenAndServe()
 	glog.Infof("Serving /healthz on %s", fmt.Sprintf(":%d", *flhHealthzPort))
 	// starting api server
-	glog.Infof("Serving /authenticate on %s", fmt.Sprintf(":%d", *flServerPort))
-	glog.Infof("Serving /ldapAuth on %s", fmt.Sprintf(":%d", *flServerPort))
+	glog.Infof("Serving /authenticate on %s", fmt.Sprintf(":%d", *flhHealthzPort))
+	glog.Infof("Serving /ldapAuth on %s", fmt.Sprintf(":%d", *flhHealthzPort))
 	if *flUseTls {
 		glog.Fatal(sslServer.ListenAndServeTLS(*flTLSCertFile, *flTLSPrivateKeyFile))
 	} else {
